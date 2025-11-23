@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+
+    <!-- CSS -->    
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://mcdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 class="logo_css.png">MyPortfolio</h2>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            <!-- Dark Mode Toggle -->
+            <li>
+                <label class="switch">
+                    <input type="checkbox" id="modeToggle">
+                    <span class="slider"></span>
+                </label>
+            </li>
+        </ul>
+
+        <!-- Mobile Hamburger -->
+        <i class="fa-solid fa-bars hamburger" id="hamburger"></i>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>Hello, I'm <span>Daniel Ding</span></h1>
+            <h2 class="typing-text">I'm a <span id="typed"></span></h2>
+
+            <a href="your-cv.pdf" class="btn" download>Download CV</a>
+
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="hero-img">
+            <img src="images/favicon.png" alt="favicon.png">
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about reveal">
+        <h2>About Me</h2>
+        <p>
+            I am a developer skilled in Python, HTML, CSS, and building apps. 
+            I love creating automation tools, websites, and digital solutions.
+        </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects reveal">
+        <h2>Projects</h2>
+
+        <div class="project-card">
+            <img src="images/project1.jpg" alt="">
+            <h3>Project One</h3>
+            <p>Description of your first project.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/project2.jpg" alt="">
+            <h3>Project Two</h3>
+            <p>Description of your second project.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/project3.jpg" alt="">
+            <h3>Project Three</h3>
+            <p>Description of your third project.</p>
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact reveal">
+        <h2>Contact Me</h2>
+        <p>Email: yourname@example.com</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Your Name. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <!-- TYPING SCRIPT -->
+    <script>
+        const words = ["Developer", "Designer", "Freelancer", "Programmer"];
+        let i = 0, j = 0, current = "", isDeleting = false;
+
+        function type() {
+            current = words[i];
+            let text = current.substring(0, j);
+            document.getElementById("typed").textContent = text;
+
+            if (!isDeleting && j < current.length) {
+                j++;
+                setTimeout(type, 120);
+            } else if (isDeleting && j > 0) {
+                j--;
+                setTimeout(type, 80);
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) i = (i + 1) % words.length;
+                setTimeout(type, 1000);
+            }
+        }
+        type();
+    </script>
+
+    <!-- DARK MODE SCRIPT -->
+    <script>
+        const toggle = document.getElementById("modeToggle");
+        toggle.addEventListener("change", () => {
+            document.body.classList.toggle("dark");
+        });
+    </script>
+
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    </script>
+
+    <!-- SCROLL REVEAL -->
+    <script>
+        ScrollReveal().reveal('.reveal', { 
+            distance: '40px',
+            duration: 1200,
+            origin: 'bottom',
+            interval: 150 
+        });
+    </script>
+
+</body>
+</html>
